@@ -621,12 +621,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    alert('Wydrukuj wypełnioną umowę i przynieś na pierwsze zajęcia\nlub zapisz jako PDF i odeślij na adres: crksztalt@gmail.com');
     window.print();
   }
 
   function clearForm() {
-    if (!confirm('Czy na pewno chcesz wyczyścić wszystkie pola?')) return;
     requiredFields.forEach(f => {
       const el = document.getElementById(f.id);
       el.value = '';
