@@ -350,7 +350,7 @@
     }
     .rodo-page .rodo-title { font-size: 12px !important; font-weight: 700; }
     .rodo-page .rodo-item, .rodo-page .rodo-subitem, .rodo-page .par { font-size: 11px !important; }
-    .btn-bar, .error-msg, .success-msg, .no-print { display: none !important; }
+    .btn-bar, .error-msg, .success-msg { display: none !important; }
     .required-mark { display: none; }
     /* Inputs and checkboxes are replaced by JS via beforeprint event */
     input { display: none !important; }
@@ -370,9 +370,7 @@
   <button class="btn btn-clear" onclick="clearForm()">🗑 Wyczyść formularz</button>
   <button class="btn btn-send" onclick="validateAndSave()">📄 Zapisz / Drukuj</button>
 </div>
-<div class="no-print" style="text-align:center;font-size:13px;color:#555;margin-bottom:1.5rem;">
-  Wydrukuj wypełnioną umowę i przynieś na pierwsze zajęcia<br>lub zapisz jako PDF i odeślij na adres: <strong>crksztalt@gmail.com</strong>
-</div>
+
 
 <div class="error-msg" id="errorMsg">⚠️ Proszę wypełnić wszystkie wymagane pola oznaczone gwiazdką (*).</div>
 <div class="success-msg" id="successMsg">✅ PDF został wygenerowany. Sprawdź pobrane pliki.</div>
@@ -625,6 +623,7 @@
   }
 
   function clearForm() {
+    if (!confirm('Czy na pewno chcesz wyczyścić wszystkie pola?')) return;
     requiredFields.forEach(f => {
       const el = document.getElementById(f.id);
       el.value = '';
